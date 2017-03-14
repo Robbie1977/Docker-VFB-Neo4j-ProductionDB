@@ -1,5 +1,7 @@
 FROM neo4j:2.3-enterprise 
 
+MAINTAINER Robert Court "rcourt@ed.ac.uk"
+
 ADD http://virtualflybrain.org/public_resources/productionDB.tar /opt/
 
 RUN cd / && tar -xzvf /opt/productionDB.tar && \
