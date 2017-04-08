@@ -1,4 +1,4 @@
-FROM virtualflybrain/docker-vfb-neo4j:enterprise 
+FROM virtualflybrain/docker-vfb-neo4j:2.3-enterprise 
 
 MAINTAINER Robert Court "rcourt@ed.ac.uk"
 
