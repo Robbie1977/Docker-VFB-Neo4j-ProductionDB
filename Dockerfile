@@ -2,10 +2,9 @@ FROM virtualflybrain/docker-vfb-neo4j:2.3-enterprise
 
 MAINTAINER Robert Court "rcourt@ed.ac.uk"
 
-ADD http://virtualflybrain.org/public_resources/productionDB.tar /opt/
+VOLUME /data
 
-RUN cd / && tar -xzvf /opt/productionDB.tar && \
-sed -i 's|=data\/graph\.db|=\/disk\/data\/neo4j\/\.ols\/neo4j|' ${NEOSERCONF} && \
-chmod -R 777 /disk
-
-VOLUME /disk
+RUN sed -i 's|=data\/graph\.db|=\/data\/neo4j|' ${NEOSERCONF} && \
+sed -i 's|#dbms.directories.data=data|dbms.directories.data=\/data\/neo4j|' ${NEOSERCONF} && \
+sed -i 's|#dbms.active_database=graph\.db|dbms.active_database=index\.db|' ${NEOSERCONF} && \
+chmod -R 777 /data
